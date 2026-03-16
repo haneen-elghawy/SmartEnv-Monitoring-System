@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Yehia Hesham",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0 },
+    { "type": "wokwi-dht22", "id": "dht", "top": -120, "left": -80 },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": -120, "left": 40 },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": -120, "left": 160 },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic", "top": -120, "left": 280 },
+    { "type": "wokwi-led", "id": "led_red", "top": 200, "left": -80, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led_green", "top": 200, "left": -20, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led_yellow", "top": 200, "left": 40, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 200, "left": 120 },
+    { "type": "wokwi-servo", "id": "servo", "top": 200, "left": 220 },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 200, "left": 340 },
+    { "type": "wokwi-resistor", "id": "r1", "top": 180, "left": -80, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 180, "left": -20, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 180, "left": 40, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    ["dht:VCC", "esp:3V3", "red", []],
+    ["dht:GND", "esp:GND.1", "black", []],
+    ["dht:SDA", "esp:4", "green", []],
+
+    ["ldr:VCC", "esp:3V3", "red", []],
+    ["ldr:GND", "esp:GND.2", "black", []],
+    ["ldr:AO", "esp:34", "orange", []],
+
+    ["pir:VCC", "esp:VIN", "red", []],
+    ["pir:GND", "esp:GND.3", "black", []],
+    ["pir:OUT", "esp:27", "purple", []],
+
+    ["ultrasonic:VCC", "esp:VIN", "red", []],
+    ["ultrasonic:GND", "esp:GND.2", "black", []],
+    ["ultrasonic:TRIG", "esp:5", "blue", []],
+    ["ultrasonic:ECHO", "esp:18", "yellow", []],
+
+    ["led_red:A", "r1:2", "", []],
+    ["r1:1", "esp:2", "red", []],
+    ["led_red:C", "esp:GND.1", "black", []],
+
+    ["led_green:A", "r2:2", "", []],
+    ["r2:1", "esp:15", "green", []],
+    ["led_green:C", "esp:GND.1", "black", []],
+
+    ["led_yellow:A", "r3:2", "", []],
+    ["r3:1", "esp:13", "yellow", []],
+    ["led_yellow:C", "esp:GND.1", "black", []],
+
+    ["buzzer:1", "esp:12", "orange", []],
+    ["buzzer:2", "esp:GND.2", "black", []],
+
+    ["servo:V+", "esp:VIN", "red", []],
+    ["servo:GND", "esp:GND.3", "black", []],
+    ["servo:PWM", "esp:14", "blue", []],
+
+    ["relay:VCC", "esp:VIN", "red", []],
+    ["relay:GND", "esp:GND.3", "black", []],
+    ["relay:IN", "esp:26", "brown", []]
+  ]
+}
